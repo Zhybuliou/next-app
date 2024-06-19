@@ -9,20 +9,18 @@ import CardWrapper from '../ui/dashboard/cardWrapper';
  
 export default async function Dashboard() {
   const revenue = await fetchRevenue();
-
   return (
     <main>
       <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
         Dashboard
       </h1>
       <Suspense fallback={<CardsSkeleton />} >
-            {/* @ts-expect-error Server Component */}
+
          <CardWrapper />
       </Suspense>
       <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-8">
        <RevenueChart revenue={revenue}  />
         <Suspense fallback={<LatestInvoicesSkeleton />}>
-        {/* @ts-expect-error Server Component */}
         <LatestInvoices />
         </Suspense>
       </div>
