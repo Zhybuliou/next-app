@@ -1,5 +1,6 @@
 'use server';
 import { z } from 'zod';
+// @ts-ignore 
 import { sql } from '@vercel/postgres';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
