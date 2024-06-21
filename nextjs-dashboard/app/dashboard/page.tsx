@@ -1,4 +1,3 @@
-import { Card } from '@/app/ui/dashboard/cards';
 import RevenueChart from '@/app/ui/dashboard/revenue-chart';
 import LatestInvoices from '@/app/ui/dashboard/latest-invoices';
 import { lusitana } from '@/app/ui/fonts';
@@ -6,7 +5,12 @@ import { fetchRevenue } from '@/app/lib/data';
 import { Suspense } from 'react';
 import { CardsSkeleton, LatestInvoicesSkeleton } from '../ui/skeletons';
 import CardWrapper from '../ui/dashboard/cardWrapper';
- 
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'dashboard',
+};
+
 export default async function Dashboard() {
   const revenue = await fetchRevenue();
   return (
@@ -14,14 +18,13 @@ export default async function Dashboard() {
       <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
         Dashboard
       </h1>
-      <Suspense fallback={<CardsSkeleton />} >
-
-         <CardWrapper />
+      <Suspense fallback={<CardsSkeleton />}>
+        <CardWrapper />
       </Suspense>
       <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-8">
-       <RevenueChart revenue={revenue}  />
+        <RevenueChart revenue={revenue} />
         <Suspense fallback={<LatestInvoicesSkeleton />}>
-        <LatestInvoices />
+          <LatestInvoices />
         </Suspense>
       </div>
     </main>
