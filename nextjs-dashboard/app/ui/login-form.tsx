@@ -7,7 +7,7 @@ import {
   ExclamationCircleIcon,
 } from '@heroicons/react/24/outline';
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
-// @ts-ignore 
+// @ts-ignore
 import { useActionState } from 'react';
 import { authenticate } from '@/app/lib/actions';
 
